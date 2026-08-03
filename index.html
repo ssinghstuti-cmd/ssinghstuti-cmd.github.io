@@ -70,12 +70,13 @@
     border-bottom:1px solid var(--line);
   }
   .nav{display:flex;align-items:center;justify-content:space-between;height:76px}
-  .brand{display:flex;align-items:baseline;gap:11px;text-decoration:none}
-  .brand .mark{
-    font-family:var(--serif);font-size:26px;font-weight:600;
-    letter-spacing:.16em;color:var(--navy);
+  .brand{display:flex;align-items:center;gap:13px;text-decoration:none;color:var(--navy)}
+  .brand-ico{height:38px;width:auto;flex:none}
+  .brand-word{
+    font-family:var(--sans);font-size:18px;letter-spacing:.2em;
+    font-weight:400;text-transform:uppercase;white-space:nowrap;line-height:1;color:inherit;
   }
-  .brand .sub{font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:500}
+  .brand-word b{font-weight:600}
   nav ul{display:flex;list-style:none;gap:38px;align-items:center}
   nav a{
     text-decoration:none;color:var(--ink);font-size:13px;
@@ -235,7 +236,9 @@
   /* ---------- footer ---------- */
   footer{background:var(--navy-2);color:rgba(247,243,234,.55);padding:44px 0;border-top:1px solid rgba(247,243,234,.1)}
   .foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-  .foot .fbrand{font-family:var(--serif);font-size:20px;letter-spacing:.16em;color:var(--cream);font-weight:600}
+  .foot-brand{color:var(--cream)}
+  .foot-brand .brand-ico{height:44px}
+  .foot-brand .brand-word{font-size:19px}
   .foot small{font-size:12px;letter-spacing:.08em}
 
   /* ---------- reveal ---------- */
@@ -285,9 +288,12 @@
 <header>
   <div class="wrap">
     <nav id="nav">
-      <a class="brand" href="#top">
-        <span class="mark">ARAMB</span>
-        <span class="sub">Ventures</span>
+      <a class="brand" href="#top" aria-label="Aramb Ventures home">
+        <svg class="brand-ico" viewBox="0 0 300 172" fill="none" aria-hidden="true">
+          <path d="M14 96C36 92 48 30 82 30C118 30 134 150 188 150C236 150 254 84 288 58" stroke="currentColor" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="82" cy="30" r="13" fill="var(--gold)"/>
+        </svg>
+        <span class="brand-word"><b>ARAMB</b> VENTURES</span>
       </a>
       <ul>
         <li><a href="#about">Who</a></li>
@@ -493,7 +499,13 @@
 <footer>
   <div class="wrap">
     <div class="foot">
-      <span class="fbrand">ARAMB VENTURES</span>
+      <a class="brand foot-brand" href="#top" aria-label="Aramb Ventures home">
+        <svg class="brand-ico" viewBox="0 0 300 172" fill="none" aria-hidden="true">
+          <path d="M14 96C36 92 48 30 82 30C118 30 134 150 188 150C236 150 254 84 288 58" stroke="currentColor" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="82" cy="30" r="13" fill="var(--gold)"/>
+        </svg>
+        <span class="brand-word"><b>ARAMB</b> VENTURES</span>
+      </a>
       <small>© <span id="yr"></span> Aramb Ventures — Scale faster. Evolve smarter.</small>
     </div>
   </div>
