@@ -69,8 +69,9 @@
     backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
   }
-  .nav{display:flex;align-items:center;justify-content:space-between;height:76px}
-  .brand{display:flex;align-items:center;gap:13px;text-decoration:none;color:var(--navy)}
+  /* CHANGE: logo pinned left, links pushed to the right-hand side */
+  .nav{display:flex;align-items:center;height:76px}
+  .brand{display:flex;align-items:center;gap:13px;text-decoration:none;color:var(--navy);margin-right:auto}
   .brand-ico{height:38px;width:auto;flex:none}
   .brand-word{
     font-family:var(--sans);font-size:18px;letter-spacing:.2em;
@@ -91,7 +92,7 @@
     transition:background .3s,color .3s;
   }
   .nav-cta:hover{background:var(--navy);color:var(--cream)}
-  .menu-btn{display:none;background:none;border:0;cursor:pointer;color:var(--navy)}
+  .menu-btn{display:none;background:none;border:0;cursor:pointer;color:var(--navy);margin-left:20px}
 
   /* ---------- hero ---------- */
   .hero{position:relative;padding:96px 0 88px;overflow:hidden}
@@ -101,7 +102,13 @@
     color:var(--ink);margin:26px 0 0;max-width:14ch;
   }
   .hero h1 .accent{color:var(--gold);font-style:italic}
-  .hero p.sub{max-width:52ch;margin:30px 0 0;font-size:18px;color:var(--taupe)}
+  /* CHANGE: value line directly under the tag line */
+  .hero p.hero-lead{
+    font-family:var(--serif);font-style:italic;font-weight:400;
+    font-size:clamp(21px,2.5vw,28px);line-height:1.5;
+    color:var(--ink);max-width:40ch;margin:28px 0 0;
+  }
+  .hero p.sub{max-width:52ch;margin:22px 0 0;font-size:18px;color:var(--taupe)}
   .hero-actions{display:flex;gap:18px;margin-top:44px;flex-wrap:wrap}
   .btn-primary{
     background:var(--navy);color:var(--cream);text-decoration:none;
@@ -322,6 +329,7 @@
   <div class="wrap">
     <span class="eyebrow">Growth Advisory</span>
     <h1>Scale faster.<br>Evolve smarter.<br><span class="accent">With Aramb.</span></h1>
+    <p class="hero-lead">New revenue, new markets, and the enterprise relationships to reach them — the operator's discipline to make the growth profitable.</p>
     <p class="sub">A growth advisory practice for companies at every stage — built on 30 years of enterprise relationships and an operator's instinct for profitable growth.</p>
     <div class="hero-actions">
       <a class="btn-primary" href="#contact">Start a conversation</a>
