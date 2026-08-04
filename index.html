@@ -69,16 +69,16 @@
     backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
   }
-  /* CHANGE: logo pinned left, links pushed to the right-hand side */
-  .nav{display:flex;align-items:center;height:76px}
-  .brand{display:flex;align-items:center;gap:13px;text-decoration:none;color:var(--navy);margin-right:auto}
+  /* logo pinned to the far left, nav links pushed to the far right of the bar */
+  .nav{display:flex;align-items:center;height:76px;flex-wrap:nowrap}
+  .brand{display:flex;align-items:center;gap:13px;text-decoration:none;color:var(--navy);margin-right:auto;flex:none}
   .brand-ico{height:38px;width:auto;flex:none}
   .brand-word{
     font-family:var(--sans);font-size:18px;letter-spacing:.2em;
     font-weight:400;text-transform:uppercase;white-space:nowrap;line-height:1;color:inherit;
   }
   .brand-word b{font-weight:600}
-  nav ul{display:flex;list-style:none;gap:38px;align-items:center}
+  nav ul{display:flex;list-style:none;gap:34px;align-items:center;white-space:nowrap;flex:none}
   nav a{
     text-decoration:none;color:var(--ink);font-size:13px;
     letter-spacing:.14em;text-transform:uppercase;font-weight:400;
@@ -102,7 +102,7 @@
     color:var(--ink);margin:18px 0 0;max-width:none;
   }
   .hero h1 .accent{color:var(--gold);font-style:italic}
-  /* CHANGE: value line directly under the tag line */
+  /* value line directly under the tag line */
   .hero p.hero-lead{
     font-family:var(--serif);font-style:italic;font-weight:400;
     font-size:clamp(21px,2.5vw,28px);line-height:1.5;
@@ -294,7 +294,7 @@
 <!-- ============ NAV ============ -->
 <header>
   <div class="wrap">
-    <nav id="nav">
+    <nav id="nav" class="nav">
       <a class="brand" href="#top" aria-label="Aramb Ventures home">
         <svg class="brand-ico" viewBox="0 0 300 172" fill="none" aria-hidden="true">
           <path d="M14 96C36 92 48 30 82 30C118 30 134 150 188 150C236 150 254 84 288 58" stroke="currentColor" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
