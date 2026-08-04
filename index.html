@@ -130,9 +130,9 @@
   .curve path.line{
     fill:none;stroke:var(--gold);stroke-width:1.4;opacity:.55;
     stroke-dasharray:1400;stroke-dashoffset:1400;
-    animation:draw 2.6s ease forwards .3s;
+    animation:draw 3.4s ease forwards .3s;
   }
-  .curve circle{fill:var(--gold);opacity:0;animation:pop .5s ease forwards 2.5s}
+  .curve circle{fill:var(--gold);opacity:0;animation:pop .5s ease forwards 3.3s}
   @keyframes draw{to{stroke-dashoffset:0}}
   @keyframes pop{to{opacity:1}}
 
@@ -143,14 +143,15 @@
 
   /* ---------- about (WHO) ---------- */
   .about{border-top:1px solid var(--line)}
-  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
   .about-grid .lede{margin-bottom:26px}
   .about-grid p+p{margin-top:18px}
   .pill-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
   .pill{
-    border:1px solid var(--line-gold);border-radius:40px;
+    background:var(--navy);
+    border:1px solid var(--navy);border-radius:40px;
     padding:9px 20px;font-size:12.5px;letter-spacing:.12em;
-    text-transform:uppercase;color:var(--navy);
+    text-transform:uppercase;color:var(--gold);
   }
 
   /* ---------- stats ---------- */
@@ -329,7 +330,7 @@
   <div class="wrap">
     <span class="eyebrow">Growth Advisory</span>
     <h1>Scale faster.<br>Evolve smarter.<br><span class="accent">With Aramb&nbsp;</span></h1>
-    <p class="hero-lead">New revenue, new markets, and the enterprise relationships to reach them — the operator's discipline to make the growth profitable.</p>
+    <p class="hero-lead">New revenue, new markets, and the enterprise relationships to reach them.</p>
 
     <div class="hero-actions">
       <a class="btn-primary" href="#contact">Start a conversation</a>
