@@ -193,12 +193,26 @@
   .client span{font-family:var(--serif);font-size:22px;color:var(--navy);font-weight:500;letter-spacing:.01em}
   .client:nth-child(4n){border-right:0}
   .client:nth-last-child(-n+4){border-bottom:0}
+  /* moving banner (sectors — no company names) */
+  .marquee{overflow:hidden;position:relative;margin-top:8px;
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:42px 0;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);
+            mask-image:linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);}
+  .marquee-track{display:flex;align-items:center;width:max-content;animation:marquee 42s linear infinite}
+  .marquee:hover .marquee-track{animation-play-state:paused}
+  .m-item{font-family:var(--serif);font-weight:500;font-size:clamp(23px,2.5vw,33px);
+    color:var(--navy);white-space:nowrap;padding:0 42px;line-height:1}
+  .m-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex:none}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
   /* ---------- why (navy band) ---------- */
   .why{background:var(--navy);color:var(--cream);border:0}
   .why .eyebrow{color:var(--gold-soft)}
   .why .eyebrow::before{background:var(--gold-soft)}
-  .why-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:center}
+  .why .wrap{display:flex;flex-direction:column;min-height:540px}
+  .why-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:center;flex:1}
+  .why-foot{padding-top:48px;text-align:center}
+  .why-foot p{max-width:52ch;margin:0 auto}
   .why h2{color:var(--cream);font-size:clamp(32px,4.4vw,50px)}
   .why p{color:rgba(247,243,234,.72);font-size:17px}
   .why p+p{margin-top:20px}
@@ -256,6 +270,8 @@
   /* ---------- responsive ---------- */
   @media(max-width:900px){
     .about-grid,.why-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
+    .why .wrap{min-height:auto}
+    .why-foot{padding-top:36px}
     .cards{grid-template-columns:1fr}
     .client-grid{grid-template-columns:repeat(2,1fr)}
     .client:nth-child(4n){border-right:1px solid var(--line)}
@@ -342,12 +358,12 @@
 <!-- ============ WHO / ABOUT ============ -->
 <section class="about" id="about">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">Who</span>
-      <h2>An advisor who has sat on both sides of the table.</h2>
-    </div>
     <div class="about-grid reveal">
       <div>
+        <div class="sec-head">
+          <span class="eyebrow">Who</span>
+          <h2>An advisor who has sat on both sides of the table.</h2>
+        </div>
         <p class="lede">Aramb Ventures is a growth advisory firm for companies at every stage — built on 30 years of industry experience and deep executive relationships.</p>
         <div class="pill-row">
           <span class="pill">Global Startups</span>
@@ -388,19 +404,19 @@
         <span class="idx">01 — Scaling</span>
         <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 40h36"/><path d="M10 34l10-12 8 6 12-18"/><path d="M40 10h-8"/><path d="M40 10v8"/></svg>
         <h3>Post-PMF &amp; Market Scaling</h3>
-        <p>Once you've found product-market fit, the challenge shifts from proving it to scaling it. I turn early traction into a repeatable engine — sharpening go-to-market, building the commercial foundation, and expanding into new segments and markets so growth compounds instead of stalling after the first wins.</p>
+        <p>Once you've found product-market fit, the challenge shifts from proving it to scaling it. I turn early traction into a repeatable engine — sharpening go-to-market, building the commercial foundation, and expanding into new segments so growth compounds instead of stalling after early wins.</p>
       </div>
       <div class="card reveal">
         <span class="idx">02 — Diversification</span>
         <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="10" r="5"/><circle cx="10" cy="38" r="5"/><circle cx="38" cy="38" r="5"/><path d="M24 15v9M24 24l-11 10M24 24l11 10"/></svg>
         <h3>Revenue Diversification &amp; Growth Advisory</h3>
-        <p>For mid-size and established firms, I help you grow beyond the core. Leveraging 30 years of relationships and category expertise, I open new revenue streams — diversifying your portfolio, defining new categories of selling to your customers, and personally forging the enterprise relationships that turn adjacent opportunities into closed revenue.</p>
+        <p>For mid-size and established firms, I help you grow beyond the core — opening new revenue streams, diversifying your portfolio, defining new categories of selling to your customers, and personally forging the enterprise relationships that turn adjacent opportunities into closed revenue.</p>
       </div>
       <div class="card reveal">
         <span class="idx">03 — Performance</span>
         <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 36a16 16 0 1 1 32 0"/><path d="M24 36l9-11"/><circle cx="24" cy="36" r="2.4" fill="currentColor" stroke="none"/></svg>
         <h3>EBITDA Growth &amp; Operational Performance</h3>
-        <p>Growth only matters when it's profitable. I unlock both revenue growth and cost avoidance — applying AI-driven tools and deep supply-chain experience to remove friction, sharpen operations, and strengthen EBITDA, so more of what you earn reaches the bottom line.</p>
+        <p>Growth only matters when it's profitable. I unlock both revenue growth and cost avoidance, applying AI-driven tools and deep supply-chain experience to remove friction, sharpen everyday operations, and strengthen EBITDA so more of what you earn reaches the bottom line where it truly belongs.</p>
       </div>
     </div>
   </div>
@@ -413,15 +429,10 @@
       <span class="eyebrow">Whom</span>
       <h2>Founders and firms building across the world's fastest-growing markets.</h2>
     </div>
-    <div class="client-grid reveal">
-      <div class="client"><span></span></div>
-      <div class="client"><span></span></div>
-      <div class="client"><span></span></div>
-      <div class="client"><span></span></div>
-      <div class="client"><span></span></div>
-      <div class="client"><span></span></div>
-      <div class="client"><span></span></div>
-      <div class="client"><span style="color:var(--gold);font-style:italic;font-size:19px">&amp; growing</span></div>
+  </div>
+  <div class="marquee reveal" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="m-item">Fintech &amp; Payments</span><span class="m-dot"></span><span class="m-item">AI &amp; Decision Intelligence</span><span class="m-dot"></span><span class="m-item">Industrial AI &amp; Sustainability</span><span class="m-dot"></span><span class="m-item">Enterprise Technology &amp; Services</span><span class="m-dot"></span><span class="m-item">Food &amp; Agriculture</span><span class="m-dot"></span><span class="m-item">Fintech &amp; Payments</span><span class="m-dot"></span><span class="m-item">AI &amp; Decision Intelligence</span><span class="m-dot"></span><span class="m-item">Industrial AI &amp; Sustainability</span><span class="m-dot"></span><span class="m-item">Enterprise Technology &amp; Services</span><span class="m-dot"></span><span class="m-item">Food &amp; Agriculture</span><span class="m-dot"></span><span class="m-item">Fintech &amp; Payments</span><span class="m-dot"></span><span class="m-item">AI &amp; Decision Intelligence</span><span class="m-dot"></span><span class="m-item">Industrial AI &amp; Sustainability</span><span class="m-dot"></span><span class="m-item">Enterprise Technology &amp; Services</span><span class="m-dot"></span><span class="m-item">Food &amp; Agriculture</span><span class="m-dot"></span><span class="m-item">Fintech &amp; Payments</span><span class="m-dot"></span><span class="m-item">AI &amp; Decision Intelligence</span><span class="m-dot"></span><span class="m-item">Industrial AI &amp; Sustainability</span><span class="m-dot"></span><span class="m-item">Enterprise Technology &amp; Services</span><span class="m-dot"></span><span class="m-item">Food &amp; Agriculture</span><span class="m-dot"></span>
     </div>
   </div>
 </section>
@@ -436,8 +447,10 @@
       </div>
       <div class="reveal">
         <p class="quote">Aramb creates repeatable, institutional pathways — for startups to reach enterprise scale, and for mature companies to diversify into sustainable new growth.</p>
-        <p>With 30 years working alongside the world's largest enterprises to grow revenue, expand margins and transform operations, the relationships and deep enterprise understanding built over that time are the foundation of Aramb Ventures.</p>
       </div>
+    </div>
+    <div class="why-foot reveal">
+      <p>With 30 years working alongside the world's largest enterprises to grow revenue, expand margins and transform operations, the relationships and deep enterprise understanding built over that time are the foundation of Aramb Ventures.</p>
     </div>
   </div>
 </section>
@@ -448,7 +461,7 @@
     <div class="contact-grid">
       <div class="reveal">
         <span class="eyebrow">Where</span>
-        <h2>Ready to move the growth curve?</h2>
+        <h2>Have a project in mind?</h2>
         <p class="intro">Tell me where you are on the curve. I'll reply personally to schedule a conversation.</p>
         <div class="direct">
           <small>Reach me directly</small>
