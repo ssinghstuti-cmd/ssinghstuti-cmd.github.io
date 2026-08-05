@@ -1,13 +1,3 @@
-<!-- ================================================================
-     ARAMB VENTURES — one-page site for Google Sites (Embed code)
-     HOW TO USE:
-       Google Sites  →  Insert  →  Embed  →  "Embed code"
-       Paste EVERYTHING in this file  →  Next  →  Insert
-       Drag the block to full width, then drag the bottom handle
-       down until the whole page shows.
-     TO EDIT LATER: search for the word  EDIT:  to find the
-       email address, and any copy you may want to change.
-  ================================================================ -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -261,6 +251,24 @@
     transition:background .3s,transform .3s;
   }
   form button:hover{background:var(--gold-soft);transform:translateY(-2px)}
+  form button:disabled{opacity:.6;cursor:not-allowed;transform:none}
+
+  /* form status messaging */
+  .form-success{
+    padding:30px 24px;
+    background:rgba(176,141,76,.1);
+    border:1px solid var(--gold-soft);
+    border-radius:2px;
+  }
+  .form-success h3{
+    color:var(--gold-soft);
+    font-size:28px;
+    margin-bottom:10px;
+  }
+  .form-success p{
+    color:var(--cream);
+    font-size:16px;
+  }
 
   /* ---------- footer ---------- */
   footer{background:var(--navy-2);color:rgba(247,243,234,.55);padding:44px 0;border-top:1px solid rgba(247,243,234,.1)}
@@ -315,7 +323,6 @@
 </head>
 <body>
 
-<!-- ============ NAV ============ -->
 <header>
   <div class="wrap">
     <nav id="nav" class="nav">
@@ -342,7 +349,6 @@
 
 <span id="top"></span>
 
-<!-- ============ HERO ============ -->
 <section class="hero">
   <div class="curve" aria-hidden="true">
     <svg viewBox="0 0 720 520" preserveAspectRatio="none">
@@ -362,7 +368,6 @@
   </div>
 </section>
 
-<!-- ============ WHO / ABOUT ============ -->
 <section class="about" id="about">
   <div class="wrap">
     <div class="about-grid reveal">
@@ -388,7 +393,6 @@
   </div>
 </section>
 
-<!-- ============ STATS ============ -->
 <section class="stats">
   <div class="wrap">
     <div class="stats-grid reveal">
@@ -399,7 +403,6 @@
   </div>
 </section>
 
-<!-- ============ WHAT / SERVICES ============ -->
 <section class="services" id="services">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -429,7 +432,6 @@
   </div>
 </section>
 
-<!-- ============ WHOM / CLIENTS ============ -->
 <section class="clients" id="clients">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -445,7 +447,6 @@
   </div>
 </section>
 
-<!-- ============ WHY (navy band) ============ -->
 <section class="why" id="why">
   <div class="wrap">
     <div class="why-grid">
@@ -463,7 +464,6 @@
   </div>
 </section>
 
-<!-- ============ WHERE / CONTACT ============ -->
 <section class="contact" id="contact">
   <div class="wrap">
     <div class="contact-grid">
@@ -473,60 +473,63 @@
         <p class="intro">Tell us where you are on the curve. We'll reply personally to schedule a conversation.</p>
         <div class="direct">
           <small>Reach us directly</small>
-          <!-- EDIT: replace this email with your real address (appears in 2 places) -->
           <a href="mailto:amit.singh@arambventures.com">amit.singh@arambventures.com</a>
         </div>
       </div>
       <div class="reveal">
-        <form id="contactForm" onsubmit="return sendMessage(event)">
+        <form id="contactForm" action="https://formspree.io/f/xwleejnn" method="POST">
           <div class="frow">
             <div class="field">
               <label for="name">Your name</label>
-              <input id="name" type="text" placeholder="Jane Doe" required>
+              <input id="name" name="name" type="text" placeholder="Jane Doe" required>
             </div>
             <div class="field">
               <label for="email">Your email</label>
-              <input id="email" type="email" placeholder="jane@company.com" required>
+              <input id="email" name="email" type="email" placeholder="jane@company.com" required>
             </div>
           </div>
           <div class="frow">
             <div class="field">
               <label for="company">Company</label>
-              <input id="company" type="text" placeholder="Company name">
+              <input id="company" name="company" type="text" placeholder="Company name">
             </div>
             <div class="field">
               <label for="stage">Your current stage</label>
-              <select id="stage">
+              <select id="stage" name="stage">
                 <option value="">Select…</option>
-                <option>Pre / early startup</option>
-                <option>Post product-market fit</option>
-                <option>Mid-size firm</option>
-                <option>Enterprise</option>
+                <option value="Pre / early startup">Pre / early startup</option>
+                <option value="Post product-market fit">Post product-market fit</option>
+                <option value="Mid-size firm">Mid-size firm</option>
+                <option value="Enterprise">Enterprise</option>
               </select>
             </div>
           </div>
           <div class="field">
             <label for="need">What you need help with</label>
-            <select id="need">
+            <select id="need" name="need">
               <option value="">Select…</option>
-              <option>Scaling after product-market fit</option>
-              <option>Revenue diversification &amp; new streams</option>
-              <option>EBITDA &amp; operational improvement</option>
-              <option>Not sure yet — let's talk</option>
+              <option value="Scaling after product-market fit">Scaling after product-market fit</option>
+              <option value="Revenue diversification &amp; new streams">Revenue diversification &amp; new streams</option>
+              <option value="EBITDA &amp; operational improvement">EBITDA &amp; operational improvement</option>
+              <option value="Not sure yet — let's talk">Not sure yet — let's talk</option>
             </select>
           </div>
           <div class="field">
             <label for="msg">A little about the project</label>
-            <textarea id="msg" placeholder="Where you are today and where you'd like to be."></textarea>
+            <textarea id="msg" name="message" placeholder="Where you are today and where you'd like to be."></textarea>
           </div>
-          <button type="submit">Send message</button>
+          <button type="submit" id="submitBtn">Send message</button>
         </form>
+        
+        <div id="formSuccess" class="form-success" style="display:none;">
+          <h3>Message Sent</h3>
+          <p>Thank you for reaching out. Your message has been sent successfully, and we will reply personally shortly.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
 <footer>
   <div class="wrap">
     <div class="foot">
@@ -556,25 +559,45 @@
     a.addEventListener('click',function(){ document.getElementById('nav').classList.remove('open'); });
   });
 
-  // Contact form -> opens the visitor's email app, pre-filled, addressed to you.
-  function sendMessage(ev){
+  // AJAX submission for Formspree
+  var form = document.getElementById("contactForm");
+  var submitBtn = document.getElementById("submitBtn");
+  var successMsg = document.getElementById("formSuccess");
+
+  form.addEventListener("submit", function(ev) {
     ev.preventDefault();
-    var v = function(id){ return (document.getElementById(id).value || '').trim(); };
-    // EDIT: replace with your real address
-    var to = 'amit.singh@arambventures.com';
-    var subject = 'New enquiry — ' + (v('company') || v('name') || 'Aramb Ventures');
-    var body =
-      'Name: ' + v('name') + '\n' +
-      'Email: ' + v('email') + '\n' +
-      'Company: ' + v('company') + '\n' +
-      'Stage: ' + v('stage') + '\n' +
-      'Needs help with: ' + v('need') + '\n\n' +
-      'Project:\n' + v('msg');
-    window.location.href = 'mailto:' + to +
-      '?subject=' + encodeURIComponent(subject) +
-      '&body=' + encodeURIComponent(body);
-    return false;
-  }
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending...";
+
+    var data = new FormData(form);
+    
+    fetch(form.action, {
+      method: form.method,
+      body: data,
+      headers: {
+        'Accept': 'application/json'
+      }
+    }).then(function(response) {
+      if (response.ok) {
+        form.style.display = "none";
+        successMsg.style.display = "block";
+      } else {
+        response.json().then(function(data) {
+          if (Object.hasOwn(data, 'errors')) {
+            alert(data["errors"].map(function(error){ return error["message"]; }).join(", "));
+          } else {
+            alert("Oops! There was a problem submitting your form");
+          }
+        });
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Send message";
+      }
+    }).catch(function(error) {
+      alert("Oops! There was a problem submitting your form");
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Send message";
+    });
+  });
 </script>
 </body>
 </html>
